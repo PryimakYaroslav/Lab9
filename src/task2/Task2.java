@@ -1,32 +1,4 @@
-
 package task2;
-
-public class Task2 {
-    public static void main(String[] args) {
-        System.out.println("=== Завдання 2: Singleton ===");
-
-        WeatherSystem weather = new WeatherSystem();
-        MonsterSpawnSystem spawner = new MonsterSpawnSystem();
-        TradingSystem trading = new TradingSystem();
-        QuestSystem quests = new QuestSystem();
-
-        // Погода змінює спільний час
-        weather.setNightTime();
-
-        // Інші системи бачать той самий час
-        spawner.spawnMonsters();
-        trading.showTime();
-        quests.showTime();
-
-        // Перевіряємо, що об'єкт один
-        boolean sameInstance =
-                weather.getClock() == spawner.getClock()
-                        && spawner.getClock() == trading.getClock()
-                        && trading.getClock() == quests.getClock();
-
-        System.out.println("\nОдин об'єкт часу: " + sameInstance);
-    }
-}
 
 // Singleton — єдиний ігровий годинник
 final class WorldClock {
@@ -117,5 +89,32 @@ class QuestSystem {
 
     public WorldClock getClock() {
         return clock;
+    }
+}
+
+public class Task2 {
+    public static void main(String[] args) {
+        System.out.println("=== Завдання 2: Singleton ===");
+
+        WeatherSystem weather = new WeatherSystem();
+        MonsterSpawnSystem spawner = new MonsterSpawnSystem();
+        TradingSystem trading = new TradingSystem();
+        QuestSystem quests = new QuestSystem();
+
+        // Погода змінює спільний час
+        weather.setNightTime();
+
+        // Інші системи бачать той самий час
+        spawner.spawnMonsters();
+        trading.showTime();
+        quests.showTime();
+
+        // Перевіряємо, що об'єкт один
+        boolean sameInstance =
+                weather.getClock() == spawner.getClock()
+                        && spawner.getClock() == trading.getClock()
+                        && trading.getClock() == quests.getClock();
+
+        System.out.println("\nОдин об'єкт часу: " + sameInstance);
     }
 }
